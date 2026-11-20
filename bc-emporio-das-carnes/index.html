@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="BC Empório das Carnes — açougue e empório com selo SIM no Centro de Balneário Camboriú. Kits de proteínas, delivery e atendimento pelo WhatsApp.">
+  <title>BC Empório das Carnes | Açougue e Empório em Balneário Camboriú</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1714;
+      --charcoal: #161412;
+      --graphite: #211e1b;
+      --cream: #f6efe6;
+      --ivory: #fbf7f1;
+      --paper: #efe6d8;
+      --wine: #7c1e2b;
+      --wine-deep: #5a1520;
+      --gold: #c9a06a;
+      --gold-soft: #e0c79a;
+      --copper: #b8734a;
+      --muted: #6d645a;
+      --line: rgba(201,160,106,.28);
+      --shadow: 0 18px 40px rgba(22,20,18,.18);
+      --radius: 16px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--ivory);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nowrap { white-space: nowrap; }
+
+    .topbar { position: sticky; top: 0; z-index: 40; }
+    .banner {
+      background: var(--wine-deep);
+      color: var(--gold-soft);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      font-weight: 600;
+    }
+    header {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      padding: 4px;
+    }
+    .brand-name {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.2;
+      color: var(--cream);
+    }
+    .brand-name small {
+      display: block;
+      font-family: Inter, sans-serif;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .menu a { text-decoration: none; color: #e8dfd3; }
+    .menu a:hover { color: var(--gold-soft); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--wine);
+      color: #fff !important;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .01em;
+      border: 1px solid transparent;
+      transition: background .2s, transform .15s;
+    }
+    .btn:hover { background: var(--wine-deep); }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--charcoal) !important;
+    }
+    .btn-gold:hover { background: var(--gold-soft); }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--gold);
+      color: var(--gold-soft) !important;
+    }
+    .btn-outline:hover { background: rgba(201,160,106,.12); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .nav-wa { flex-shrink: 0; padding: 10px 18px; }
+
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background: #1a1410 center/cover no-repeat;
+      background-image: linear-gradient(180deg, rgba(18,14,12,.28) 8%, rgba(14,10,8,.78) 72%, rgba(14,10,8,.94) 100%), url("assets/hero-cortes.jpg");
+    }
+    .hero-inner { padding: 80px 0 72px; max-width: 720px; }
+    .kicker {
+      display: inline-block;
+      color: var(--gold-soft);
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(36px, 5.4vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      margin-bottom: 18px;
+    }
+    .hero p.lede {
+      font-size: 18px;
+      color: #efe6d8;
+      max-width: 36em;
+      margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-soft);
+      font-size: 14px;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+    .stars { color: var(--gold); letter-spacing: 1px; }
+
+    section { padding: 88px 0; }
+    .sec-head { max-width: 640px; margin-bottom: 40px; }
+    .eyebrow {
+      color: var(--wine);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(28px, 3.4vw, 42px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .sec-head p { color: var(--muted); font-size: 17px; }
+
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .products { background: var(--ivory); }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid rgba(26,23,20,.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(22,20,18,.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .card img { width: 100%; height: 210px; object-fit: cover; }
+    .card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .card h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .card p { color: var(--muted); font-size: 15px; }
+    .caption, .example {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .caption { color: #9a8f82; }
+    .example {
+      align-self: flex-start;
+      color: var(--copper);
+      border: 1px solid rgba(184,115,74,.4);
+      border-radius: 999px;
+      padding: 3px 9px;
+      letter-spacing: .1em;
+    }
+
+    .about { background: var(--charcoal); color: var(--cream); }
+    .about .eyebrow { color: var(--gold); }
+    .about h2 { color: #fff; }
+    .about .sec-head p, .about p { color: #d8cfc3; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-copy p { margin-bottom: 16px; font-size: 16.5px; }
+    .seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 16px;
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin: 8px 0 22px;
+    }
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .about-photos img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+    .about-photos .span2 { grid-column: 1 / -1; height: 300px; }
+    figcaption { font-size: 11px; color: #9a8f82; margin-top: 6px; letter-spacing: .04em; }
+
+    .reviews { background: var(--cream); text-align: center; }
+    .reviews .sec-head { margin-inline: auto; }
+    .score {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 88px;
+      line-height: 1;
+      color: var(--wine);
+    }
+    .reviews .stars { font-size: 22px; display: block; margin: 8px 0 6px; }
+    .reviews .count { color: var(--muted); }
+
+    .visit { background: var(--ivory); }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 36px;
+      align-items: start;
+    }
+    .hours { list-style: none; margin: 18px 0 28px; }
+    .hours li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(26,23,20,.08);
+      padding: 10px 0;
+      font-size: 15px;
+    }
+    .hours span { color: var(--muted); }
+    .contact-lines { display: grid; gap: 8px; margin-bottom: 22px; font-size: 15.5px; }
+    .contact-lines a { color: var(--wine); text-decoration: none; font-weight: 600; }
+    .contact-lines a:hover { text-decoration: underline; }
+    .map-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 420px;
+      background: var(--graphite);
+      box-shadow: var(--shadow);
+    }
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 50% 38%, rgba(201,160,106,.16), transparent 55%),
+        var(--graphite);
+    }
+    .pin {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--wine);
+      display: grid; place-items: center;
+      margin-bottom: 14px;
+      box-shadow: 0 0 0 8px rgba(124,30,43,.25);
+    }
+    .pin svg { width: 24px; height: 24px; fill: #fff; }
+    .map-fallback p { max-width: 18em; color: #d8cfc3; margin: 6px 0 16px; }
+    .map-wrap iframe {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 420px;
+      border: 0;
+    }
+
+    .cta {
+      background:
+        linear-gradient(180deg, rgba(18,14,12,.55), rgba(14,10,8,.88)),
+        url("assets/churrasco.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 96px 0;
+    }
+    .cta h2 { color: #fff; margin-bottom: 12px; }
+    .cta p { color: #efe6d8; max-width: 32em; margin: 0 auto 28px; font-size: 17px; }
+    .cta .hero-actions { justify-content: center; }
+
+    footer {
+      background: #100e0c;
+      color: #c9bfb3;
+      padding: 36px 0 28px;
+      font-size: 13.5px;
+    }
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 22px;
+    }
+    footer .brand-name { font-size: 16px; }
+    .disclaimer {
+      border-top: 1px solid rgba(201,160,106,.16);
+      padding-top: 16px;
+      color: #8a8278;
+      font-size: 12px;
+    }
+    .social { display: flex; gap: 16px; }
+    .social a { color: var(--gold-soft); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .about-grid, .visit-grid { grid-template-columns: 1fr; }
+      .about-photos img { height: 200px; }
+      .about-photos .span2 { height: 220px; }
+      .hero { min-height: 86vh; align-items: flex-end; }
+      .hero-inner { padding: 56px 0 48px; }
+      section { padding: 64px 0; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      header .brand-name { display: none; }
+      .score { font-size: 72px; }
+      .hero-actions .btn,
+      .cta .btn,
+      .about .btn,
+      .visit .btn { width: 100%; }
+      .hero-actions { width: 100%; }
+      .nav-wa { width: auto; flex-shrink: 0; }
+      .rating-pill { margin: 8px 0 0; }
+    }
+    body { overflow-x: hidden; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="banner">Prévia / proposta de site — não oficial</div>
+    <header>
+      <div class="wrap nav">
+        <a class="brand" href="#inicio">
+          <img src="assets/logo.jpg" width="56" height="56" alt="Logo BC Empório das Carnes">
+          <span class="brand-name">BC Empório das&nbsp;Carnes<small>Açougue e empório</small></span>
+        </a>
+        <ul class="menu">
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#sobre">O empório</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#visita">Horário e localização</a></li>
+        </ul>
+        <a class="btn nav-wa" href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </header>
+  </div>
+
+  <section class="hero" id="inicio">
+    <div class="wrap hero-inner">
+      <span class="kicker">Balneário Camboriú · Selo SIM</span>
+      <h1>Carnes e kits para o dia a dia e o churrasco</h1>
+      <p class="lede">O BC Empório das Carnes é um açougue e empório no Centro de Balneário Camboriú, com inspeção municipal (selo SIM). Peça pelo WhatsApp ou retire no salão.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Fazer um pedido
+        </a>
+        <a class="btn btn-outline" href="#visita">Como chegar</a>
+        <span class="rating-pill"><span class="stars" aria-hidden="true">★★★★★</span> 4,9 no Google · 35 avaliações</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="produtos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">O que oferecemos</p>
+        <h2>Kits, cortes e delivery</h2>
+        <p>Peça pelo WhatsApp e confira os kits e cortes disponíveis no dia. Os itens podem variar conforme o estoque.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <img src="assets/selecao.jpg" alt="Seleção de carnes, embutidos e temperos em tábua de madeira">
+          <div class="card-body">
+            <h3>Kits de proteínas</h3>
+            <p>Combinações de carnes prontas para o churrasco ou a rotina da casa. Consulte as opções do momento pelo WhatsApp.</p>
+            <span class="caption">Foto ilustrativa</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/corte-tbone.jpg" alt="Corte de carne crua com alecrim e pimenta">
+          <div class="card-body">
+            <h3>Kits dia a dia e Kit Família</h3>
+            <p>Opções pensadas para o consumo semanal e para reunir a família. Peça a lista atualizada no atendimento.</p>
+            <span class="caption">Foto ilustrativa</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/churrasco.jpg" alt="Cortes grelhados sobre brasa">
+          <div class="card-body">
+            <h3>Delivery</h3>
+            <p>Peça pelo WhatsApp e receba em casa. Também é possível retirar no empório, no Centro de Balneário Camboriú.</p>
+            <span class="caption">Foto ilustrativa</span>
+          </div>
+        </article>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <img src="assets/hero-cortes.jpg" alt="Dois cortes de carne crua sobre tábua de açougue">
+          <div class="card-body">
+            <h3>Carnes e milaneses</h3>
+            <p>Cortes para o dia a dia e milaneses prontos para o preparo. Pergunte o que está disponível no salão.</p>
+            <span class="caption">Foto ilustrativa</span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/temperada.jpg" alt="Peça de carne temperada sobre tábua de bambu">
+          <div class="card-body">
+            <span class="example">Texto de exemplo</span>
+            <h3>Entrecot e carnes temperadas</h3>
+            <p>Entrecot e carnes temperadas a pronta entrega, para levar e assar com praticidade.</p>
+            <span class="caption">Foto ilustrativa</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">O empório</p>
+        <h2>Açougue com inspeção municipal no Centro</h2>
+        <span class="seal">Selo SIM · inspeção municipal</span>
+        <p>O BC Empório das Carnes funciona no Edifício Coral Gables, na Avenida Brasil, no Centro de Balneário Camboriú. É um açougue e empório com selo de Inspeção Municipal (SIM).</p>
+        <p>O atendimento é de segunda a sábado, das 8h às 20h, e aos domingos, das 8h às 14h. Para pedidos, dúvidas ou delivery, o caminho mais direto é o WhatsApp.</p>
+        <a class="btn" href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+      <div>
+        <div class="about-photos">
+          <img class="span2" src="assets/selecao.jpg" alt="Tábua com cortes, linguiças e temperos">
+          <img src="assets/corte-tbone.jpg" alt="Corte com alecrim">
+          <img src="assets/hero-cortes.jpg" alt="Dois cortes de carne sobre tábua de açougue">
+        </div>
+        <figcaption>Fotos ilustrativas — não são do estabelecimento.</figcaption>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">O que dizem os clientes</p>
+        <h2>Avaliação no Google</h2>
+      </div>
+      <p class="score">4,9</p>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <p class="count">35 avaliações no Google</p>
+    </div>
+  </section>
+
+  <section class="visit" id="visita">
+    <div class="wrap visit-grid">
+      <div>
+        <p class="eyebrow">Horário e localização</p>
+        <h2>Venha até o empório ou peça pelo WhatsApp</h2>
+        <p style="color:var(--muted);margin:0 0 8px;">Ed. Coral Gables<br>Av. Brasil, 2911, sala 03<br>Centro, Balneário Camboriú&nbsp;-&nbsp;SC<br>88330-058</p>
+        <ul class="hours">
+          <li>Segunda a sábado <span>8h – 20h</span></li>
+          <li>Domingo <span>8h – 14h</span></li>
+        </ul>
+        <div class="contact-lines">
+          <div>WhatsApp: <a href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">(47) 99264-7745</a></div>
+          <div>Celular: <a href="tel:+5547991332303">(47) 99133-2303</a></div>
+          <div>Telefone: <a href="tel:+554730814513">(47) 3081-4513</a></div>
+          <div>E-mail: <a href="mailto:bcemporiodascarnes@gmail.com">bcemporiodascarnes@gmail.com</a></div>
+          <div>Instagram: <a href="https://www.instagram.com/bc_emporiodascarnes/" target="_blank" rel="noopener">@bc_emporiodascarnes</a></div>
+          <div>Linktree: <a href="https://linktr.ee/atendimentobcemporiodascarnes" target="_blank" rel="noopener">linktr.ee/atendimentobcemporiodascarnes</a></div>
+        </div>
+        <a class="btn" href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">Pedir no WhatsApp</a>
+      </div>
+      <div class="map-wrap">
+        <div class="map-fallback">
+          <div class="pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+          </div>
+          <strong>Ed. Coral Gables</strong>
+          <p>Av. Brasil, 2911, sala 03<br>Centro, Balneário Camboriú&nbsp;-&nbsp;SC</p>
+          <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&amp;query=Ed.+Coral+Gables,+Av.+Brasil,+2911,+sala+03,+Centro,+Balne%C3%A1rio+Cambori%C3%BA+-+SC,+88330-058" target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+        <iframe title="Mapa do BC Empório das Carnes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Ed.+Coral+Gables,+Av.+Brasil+2911,+sala+03,+Centro,+Balne%C3%A1rio+Cambori%C3%BA+-+SC,+88330-058&amp;z=16&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Pronto para o próximo churrasco?</h2>
+      <p>Fale conosco no WhatsApp para pedir kits, cortes e delivery. Estamos no Centro de Balneário Camboriú, de segunda a domingo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">Fazer um pedido no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <span class="brand-name">BC Empório das&nbsp;Carnes</span>
+          <p>Av. Brasil, 2911, sala 03<br>Centro, Balneário Camboriú&nbsp;-&nbsp;SC</p>
+        </div>
+        <div class="social">
+          <a href="https://www.instagram.com/bc_emporiodascarnes/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://linktr.ee/atendimentobcemporiodascarnes" target="_blank" rel="noopener">Linktree</a>
+          <a href="https://wa.me/5547992647745?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <p class="disclaimer">Prévia criada a partir de informações públicas; textos e fotos sujeitos à aprovação do estabelecimento.</p>
+    </div>
+  </footer>
+</body>
+</html>
