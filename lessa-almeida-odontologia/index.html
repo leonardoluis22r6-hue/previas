@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lessa &amp; Almeida Odontologia | Prévia de site (não oficial)</title>
+  <meta name="description" content="Prévia / proposta de site — não oficial. Clínica odontológica no Centro de Balneário Camboriú. Página demonstrativa, não representa a clínica." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <style>
+    :root {
+      --petrol: #1a4554;
+      --petrol-dark: #12323e;
+      --ink-dark: #141414;
+      --teal: #1f7f84;
+      --aqua: #3aa8a4;
+      --aqua-soft: #e8f5f4;
+      --ice: #f3f7f8;
+      --white: #ffffff;
+      --ink: #16323a;
+      --ink-soft: #4a6168;
+      --muted: #7a8b90;
+      --line: #d5e0e2;
+      --shadow: 0 18px 48px rgba(20, 20, 20, 0.08);
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--ice);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.02rem;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    a:hover { color: var(--petrol); }
+    .skip {
+      position: absolute; left: 1rem; top: -4rem;
+      background: var(--petrol); color: #fff; padding: 0.6rem 1rem; z-index: 100;
+    }
+    .skip:focus { top: 0.5rem; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; }
+    .preview-banner {
+      background: #7a3e1d;
+      color: #fff7ef;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .preview-banner strong { color: #ffe0c2; }
+
+    header {
+      background: var(--ink-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.65rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; text-decoration: none; color: inherit; flex-shrink: 0; }
+    .brand img {
+      height: 42px;
+      width: auto;
+      max-width: 200px;
+      background: var(--ink-dark);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: #d5e0e3; font-size: 0.9rem; font-weight: 600; }
+    .nav-links a:hover { color: #fff; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      border: none; cursor: pointer; text-decoration: none !important;
+      border-radius: 999px; padding: 0.8rem 1.25rem;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.01em;
+      font-family: inherit;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--teal); color: #fff !important; }
+    .btn-primary:hover { background: #176e73; }
+    .btn-ghost { background: transparent; color: #fff !important; border: 1px solid rgba(255,255,255,0.35); }
+    .btn-ghost:hover { border-color: #fff; }
+    .btn-petrol { background: var(--petrol); color: #fff !important; }
+    .btn-petrol:hover { background: var(--petrol-dark); }
+    .btn-outline { background: transparent; color: var(--petrol) !important; border: 1px solid var(--line); }
+    .btn-outline:hover { border-color: var(--teal); }
+    .btn svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+
+    .nav-toggle {
+      display: none; width: 42px; height: 42px;
+      border: 1px solid rgba(255,255,255,0.2); background: transparent;
+      border-radius: 10px; cursor: pointer;
+    }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+      display: block; width: 16px; height: 1.6px; background: #fff; margin: 0 auto; position: relative;
+    }
+    .nav-toggle span::before, .nav-toggle span::after { content: ""; position: absolute; left: 0; }
+    .nav-toggle span::before { top: -5px; }
+    .nav-toggle span::after { top: 5px; }
+    #nav-toggle { display: none; }
+
+    @media (max-width: 860px) {
+      .nav-toggle { display: grid; place-items: center; }
+      .nav-links {
+        display: none; position: absolute; left: 0; right: 0; top: 100%;
+        background: var(--ink-dark); border-bottom: 1px solid rgba(255,255,255,0.08);
+        flex-direction: column; align-items: flex-start;
+        padding: 1rem 1.4rem 1.25rem; gap: 0.8rem;
+      }
+      #nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav { position: relative; }
+      .brand img { height: 36px; }
+    }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.4rem; }
+
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2.4rem;
+      align-items: center;
+      padding: 4.2rem 0 4rem;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 700; color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .hero-kicker::before {
+      content: ""; width: 1.4rem; height: 1px; background: var(--teal);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+      color: var(--petrol);
+      margin-bottom: 0.9rem;
+    }
+    .nowrap { white-space: nowrap; }
+    .hero .lede {
+      max-width: 36rem;
+      font-size: 1.06rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.5rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.4rem; }
+    .rating-pill {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: var(--aqua-soft);
+      border: 1px solid #cfe8e6;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem 0.45rem 0.7rem;
+      font-size: 0.88rem;
+      color: var(--petrol);
+    }
+    .stars { color: #c9a24b; letter-spacing: 0.08em; }
+    .hero-photo { margin: 0; }
+    .hero-photo .frame { border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); background: #ddd; }
+    .hero-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 40%; }
+    .hero-photo figcaption { margin-top: 0.55rem; font-size: 0.78rem; color: var(--muted); }
+
+    section { padding: 4.2rem 0; }
+    .section-kicker {
+      font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 800; color: var(--teal); margin-bottom: 0.45rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      color: var(--petrol); line-height: 1.2; margin-bottom: 0.7rem;
+    }
+    .section-lead { max-width: 40rem; color: var(--ink-soft); margin-bottom: 2rem; }
+
+    .services { background: var(--white); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+    }
+    .service-card {
+      background: var(--ice);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.25rem 1.3rem;
+    }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--aqua-soft); color: var(--petrol);
+      display: grid; place-items: center; margin-bottom: 0.9rem;
+    }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-card h3 { font-size: 1.08rem; font-weight: 800; color: var(--petrol); margin-bottom: 0.35rem; }
+    .service-card p { font-size: 0.94rem; color: var(--ink-soft); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2.4rem;
+      align-items: start;
+    }
+    .about-copy { grid-column: 1; }
+    .frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #ccc;
+    }
+    .frame img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+    figcaption { margin-top: 0.55rem; font-size: 0.78rem; color: var(--muted); }
+    .about-photos { display: grid; gap: 1rem; }
+    .about-photos .wide img { aspect-ratio: 16/11; }
+
+    .team { background: var(--white); }
+    .team-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-bottom: 1.4rem;
+    }
+    .team-photos {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+    .team-card {
+      background: var(--ice);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.25rem;
+      border-top: 3px solid var(--teal);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .team-card h3 { font-size: 1.08rem; font-weight: 800; color: var(--petrol); line-height: 1.3; }
+    .team-role {
+      display: block; margin: 0.35rem 0 0.55rem;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--teal);
+    }
+    .team-card p { font-size: 0.92rem; color: var(--ink-soft); }
+    .team-photos .frame img { width: 100%; height: 430px; aspect-ratio: auto; object-fit: cover; }
+    .team-photos .portrait img { object-position: center 15%; }
+    .team-photos .group img { object-position: center 20%; }
+    @media (max-width: 900px) {
+      .team-photos .frame img { height: 360px; }
+    }
+
+    .reviews { background: var(--petrol); color: #e8f0f2; }
+    .reviews h2, .reviews .section-kicker { color: #fff; }
+    .reviews .section-kicker { color: #9ee0dc; }
+    .review-hero {
+      display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap;
+      margin-bottom: 1.6rem;
+    }
+    .review-score {
+      font-size: 3.2rem; font-weight: 800; letter-spacing: -0.04em; color: #fff; line-height: 1;
+    }
+    .review-meta { color: #c5d5d8; font-weight: 600; }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(58, 168, 164, 0.28);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.2rem 1.15rem;
+    }
+    .review-card .stars { margin-bottom: 0.7rem; display: block; }
+    .review-card p { font-size: 0.95rem; color: #e4eef0; }
+    .review-card footer { margin-top: 1rem; font-size: 0.8rem; color: #b7c8cc; }
+    .review-card footer strong { color: #fff; font-weight: 700; display: block; }
+
+    .visit { background: var(--ice); }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .hours-list { list-style: none; margin: 1rem 0 1.2rem; }
+    .hours-list li {
+      display: flex; justify-content: space-between; gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.96rem;
+    }
+    .hours-list span { color: var(--ink-soft); }
+    .hours-note { font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .contact-list { list-style: none; display: grid; gap: 0.45rem; margin: 0.8rem 0 1.2rem; }
+    .contact-list a { font-weight: 700; }
+    .map-block { display: flex; flex-direction: column; gap: 0.8rem; }
+    .map-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 280px;
+      background: linear-gradient(160deg, #dce8ea, #c5d5c8);
+      box-shadow: var(--shadow);
+    }
+    .map-fallback {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem; color: var(--petrol);
+      pointer-events: none;
+    }
+    .map-fallback strong { font-size: 1.05rem; display: block; margin-top: 0.3rem; }
+    .map-fallback span { font-size: 0.9rem; color: var(--ink-soft); max-width: 22rem; }
+    .map-wrap iframe {
+      position: relative; z-index: 1;
+      width: 100%; height: 320px; border: 0;
+      background: transparent;
+    }
+    .side-photo img { aspect-ratio: 16/11; }
+
+    footer.site-footer {
+      background: var(--ink-dark);
+      color: #c9d6d9;
+      padding: 2.4rem 0 1.6rem;
+    }
+    .footer-grid {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 1.5rem; align-items: flex-start;
+    }
+    .footer-brand img {
+      height: 44px; width: auto; max-width: 200px;
+      background: var(--ink-dark); margin-bottom: 0.8rem;
+    }
+    .footer-brand p, .footer-col p, .footer-col a { font-size: 0.9rem; color: #c9d6d9; }
+    .footer-col h3 {
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #9ee0dc; margin-bottom: 0.6rem; font-weight: 800;
+    }
+    .footer-col a { display: block; text-decoration: none; margin-bottom: 0.3rem; }
+    .footer-col a:hover { color: #fff; }
+    .footer-legal {
+      margin-top: 1.8rem; padding-top: 1.1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem; color: #8a9aa0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .service-grid, .about-grid, .team-cards, .team-photos, .review-grid, .visit-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid { padding: 2.6rem 0 2.4rem; gap: 1.6rem; }
+      .hero-photo img { aspect-ratio: 4/5; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <div class="topbar">
+    <div class="preview-banner">Prévia / proposta de site — <strong>não oficial</strong></div>
+    <header>
+      <div class="nav">
+        <a class="brand" href="#topo" aria-label="Lessa e Almeida Odontologia">
+          <img src="assets/logo.jpg" alt="Lessa &amp; Almeida Odontologia" width="200" height="105" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span></label>
+        <ul class="nav-links">
+          <li><a href="#servicos">Tratamentos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#visitar">Visitar</a></li>
+          <li><a class="btn btn-primary" href="https://wa.me/5547991802515">WhatsApp</a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="topo">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="hero-kicker">Odontologia estética · Centro, Balneário Camboriú</p>
+          <h1>Lentes e cuidado odontológico <span class="nowrap">na Rua 700</span></h1>
+          <p class="lede">A Lessa &amp; Almeida Odontologia fica no Centro de Balneário Camboriú e atende com lentes em resina e porcelana, além de ortodontia e harmonização orofacial.</p>
+          <div class="hero-actions">
+            <a class="btn btn-petrol" href="https://wa.me/5547991802515">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 16.5L1 23l6.7-1.1A11 11 0 1 0 20.5 3.5zm-8.5 17a9.1 9.1 0 0 1-4.6-1.3l-.33-.2-3.97.66.67-3.87-.22-.35A9.1 9.1 0 1 1 12 20.5zm5.3-6.8c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54 1.92.83 2.38.84 3.23.71.52-.08 1.75-.71 2-1.4.25-.68.25-1.27.17-1.4-.07-.13-.27-.2-.57-.35z"/></svg>
+              WhatsApp
+            </a>
+            <a class="btn btn-outline" href="tel:+5547991802515">Ligar (47) 99180-2515</a>
+          </div>
+          <div class="rating-pill">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span><strong>5,0</strong> no Google · 63 avaliações</span>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <div class="frame">
+            <img src="assets/recepcao.jpg" alt="Recepção da Lessa e Almeida Odontologia, com balcão de madeira e o logotipo da clínica" width="1066" height="1600" />
+          </div>
+          <figcaption>Recepção da clínica, na sala 1002.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="services" id="servicos">
+      <div class="wrap">
+        <p class="section-kicker">Especialidades</p>
+        <h2>Nossos tratamentos</h2>
+        <p class="section-lead">Cuidamos do sorriso com foco em lentes dentárias e em um atendimento que também abrange ortodontia e harmonização orofacial.</p>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.2 8c0-2.2 1.4-3.8 3-3.8.55 0 1.05.22 1.4.55.35-.33.85-.55 1.4-.55 1.6 0 3 1.6 3 3.8 0 1.3-.35 3.4-.8 5.6-.3 1.5-.5 3-.5 4.1 0 1-.55 1.7-1.35 1.7-.8 0-1.3-.7-1.4-1.6h-.7c-.1.9-.6 1.6-1.4 1.6-.8 0-1.35-.7-1.35-1.7 0-1.1-.2-2.6-.5-4.1C8.55 11.4 8.2 9.3 8.2 8z"/></svg>
+            </div>
+            <h3>Lentes em resina</h3>
+            <p>Camadas finas de resina composta aplicadas sobre os dentes para ajustar cor, forma e pequeno desalinhamento, quando indicadas.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 8c0-2.4 2-4.2 5-4.2S17 5.6 17 8c0 1.5-.4 3.8-.9 6.2-.3 1.6-.5 3.2-.5 4.2 0 1.1-.7 1.8-1.6 1.8s-1.5-.8-1.6-1.8h-.8c-.1 1-.7 1.8-1.6 1.8S7.4 19.5 7.4 18.4c0-1-.2-2.6-.5-4.2C6.4 11.8 7 9.5 7 8z"/><path d="M9.2 11.5h5.6"/></svg>
+            </div>
+            <h3>Lentes em porcelana</h3>
+            <p>Lentes cerâmicas que recobrem a face visível dos dentes para um resultado mais duradouro, com planejamento individual.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16c2-6 4-10 8-10s6 4 8 10"/><path d="M7 16c.8 2 2.4 3 5 3s4.2-1 5-3"/></svg>
+            </div>
+            <h3>Ortodontia</h3>
+            <p>Avaliação e acompanhamento do alinhamento dos dentes, como parte do cuidado oferecido pela equipe.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="9" r="4"/><path d="M4 20c1.5-3.2 4.4-5 8-5s6.5 1.8 8 5"/></svg>
+            </div>
+            <h3>Harmonização orofacial</h3>
+            <p>Procedimentos que buscam equilibrar o sorriso e o contorno da face, com indicação avaliada caso a caso.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-copy">
+          <p class="section-kicker">A clínica</p>
+          <h2>Lessa &amp; Almeida no Centro de Balneário Camboriú</h2>
+          <p>A clínica funciona na Rua 700, 489, sala 1002, no Centro. É um consultório de odontologia estética, com atendimento em lentes de resina e de porcelana.</p>
+          <p style="margin-top:0.85rem">À frente está a Dra. Roberta&nbsp;Lessa, ao lado da Dra. Maria Eduarda de&nbsp;Almeida e da equipe. O atendimento é feito com hora marcada.</p>
+        </div>
+        <div class="about-photos">
+          <figure>
+            <div class="frame">
+              <img src="assets/consultorio.jpg" alt="Consultório da Lessa e Almeida, com cadeira odontológica e vista para a cidade" width="1066" height="1600" />
+            </div>
+            <figcaption>Consultório no Centro de Balneário Camboriú.</figcaption>
+          </figure>
+          <figure class="wide">
+            <div class="frame">
+              <img src="assets/espera.jpg" alt="Sala de espera da Lessa e Almeida, com espelho e o letreiro do Instagram da clínica" width="933" height="1400" />
+            </div>
+            <figcaption>Sala de espera da clínica.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="team" id="equipe">
+      <div class="wrap">
+        <p class="section-kicker">Profissionais</p>
+        <h2>Nossa equipe</h2>
+        <p class="section-lead">Conheça as dentistas à frente da Lessa &amp; Almeida.</p>
+        <div class="team-cards">
+          <article class="team-card">
+            <h3>Dra. Roberta&nbsp;Lessa</h3>
+            <span class="team-role">Especialista em lentes dentárias</span>
+            <p>Responsável pela clínica. Atua com lentes em resina e porcelana e conduz o planejamento do sorriso.</p>
+          </article>
+          <article class="team-card">
+            <h3>Dra. Maria Eduarda de&nbsp;Almeida</h3>
+            <span class="team-role">Dentista</span>
+            <p>Integra a equipe da Lessa &amp; Almeida e atende na clínica ao lado da Dra.&nbsp;Roberta.</p>
+          </article>
+        </div>
+        <div class="team-photos">
+          <figure class="portrait">
+            <div class="frame">
+              <img src="assets/dra-roberta.jpg" alt="Dra. Roberta Lessa no consultório da Lessa e Almeida" width="933" height="1400" />
+            </div>
+            <figcaption>Dra. Roberta Lessa.</figcaption>
+          </figure>
+          <figure class="group">
+            <div class="frame">
+              <img src="assets/equipe.jpg" alt="Equipe da Lessa e Almeida Odontologia, com a Dra. Roberta Lessa ao centro e a Dra. Maria Eduarda de Almeida à esquerda" width="800" height="600" />
+            </div>
+            <figcaption>A equipe da clínica. À esquerda, Dra. Maria Eduarda de Almeida; ao centro, Dra. Roberta Lessa.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="avaliacoes">
+      <div class="wrap">
+        <p class="section-kicker">Avaliações</p>
+        <h2>O que dizem nossos pacientes</h2>
+        <div class="review-hero">
+          <div class="review-score">5,0</div>
+          <p class="review-meta">Nota 5,0 no Google, com 63 avaliações.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“Sem dúvidas o melhor consultório de odontologia. […] Fiz lentes de porcelana com elas e hoje sou mais feliz e trouxeram meu sorriso de volta. Super indico. De olhos fechados.”</p>
+            <footer><strong>Evandrea Alano</strong> Avaliação no Google</footer>
+          </article>
+          <article class="review-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“Me senti em casa! Assim defino minha experiência no tratamento da clínica. Toda equipe em harmonia, com o mesmo objetivo; executar o trabalho com responsabilidade e sensibilidade.”</p>
+            <footer><strong>Gilbertomariza Silva</strong> Avaliação no Google</footer>
+          </article>
+          <article class="review-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“Estou completamente apaixonado pelo meu sorriso novo! Substitui minhas facetas resinadas porque não estava feliz com o resultado anterior e hoje tenho prazer em sorrir.”</p>
+            <footer><strong>Leonardo Santos</strong> Avaliação no Google</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visitar">
+      <div class="wrap">
+        <p class="section-kicker">Visite-nos</p>
+        <h2>Horário e localização</h2>
+        <div class="visit-grid">
+          <div>
+            <h3 style="font-size:1.05rem;color:var(--petrol);margin-bottom:0.3rem;">Funcionamento</h3>
+            <ul class="hours-list">
+              <li>Segunda a sexta <span>8h30 às 20h</span></li>
+              <li>Sábado <span>8h30 às 12h</span></li>
+              <li>Domingo <span>Fechado</span></li>
+            </ul>
+            <p class="hours-note">Atendimento com hora marcada. Em feriados, o funcionamento pode mudar. Confirme ao agendar.</p>
+            <h3 style="font-size:1.05rem;color:var(--petrol);margin-bottom:0.3rem;">Contato</h3>
+            <ul class="contact-list">
+              <li>WhatsApp: <a href="https://wa.me/5547991802515">(47) 99180-2515</a></li>
+              <li>Telefone: <a href="tel:+5547991802515">(47) 99180-2515</a></li>
+              <li>Instagram: <a href="https://www.instagram.com/lessaealmeidaodonto/" rel="noopener">@lessaealmeidaodonto</a></li>
+            </ul>
+            <div class="hero-actions">
+              <a class="btn btn-petrol" href="https://wa.me/5547991802515">Chamar no WhatsApp</a>
+              <a class="btn btn-outline" href="tel:+5547991802515">Ligar</a>
+            </div>
+          </div>
+          <div class="map-block">
+            <div class="map-wrap">
+              <div class="map-fallback">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                <strong>R. 700, 489, sala 1002</strong>
+                <span>Centro, Balneário Camboriú - SC, 88330-620</span>
+              </div>
+              <iframe
+                title="Mapa da Lessa e Almeida Odontologia"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=Rua%20700%2C%20489%2C%20Sala%201002%2C%20Centro%2C%20Balne%C3%A1rio%20Cambori%C3%BA%20-%20SC%2C%2088330-620&amp;hl=pt-BR&amp;z=17&amp;output=embed"></iframe>
+            </div>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20700%2C%20489%2C%20Sala%201002%2C%20Centro%2C%20Balne%C3%A1rio%20Cambori%C3%BA%20-%20SC%2C%2088330-620" rel="noopener">Abrir no Google Maps</a></p>
+            <figure class="side-photo">
+              <div class="frame">
+                <img src="assets/escritorio.jpg" alt="Sala de atendimento da Lessa e Almeida, com o logotipo LA na parede" width="933" height="1400" />
+              </div>
+              <figcaption>Sala de atendimento na Rua 700, 489.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="Lessa &amp; Almeida Odontologia" width="200" height="105" />
+        <p>R. 700, 489, sala 1002<br />Centro, Balneário Camboriú - SC<br />CEP 88330-620</p>
+      </div>
+      <div class="footer-col">
+        <h3>Contato</h3>
+        <a href="https://wa.me/5547991802515">WhatsApp (47) 99180-2515</a>
+        <a href="tel:+5547991802515">Telefone (47) 99180-2515</a>
+      </div>
+      <div class="footer-col">
+        <h3>Redes</h3>
+        <a href="https://www.instagram.com/lessaealmeidaodonto/" rel="noopener">Instagram @lessaealmeidaodonto</a>
+      </div>
+    </div>
+    <div class="wrap footer-legal">
+      Prévia criada a partir de informações públicas; textos e fotos sujeitos à aprovação da clínica.
+    </div>
+  </footer>
+</body>
+</html>
