@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Victória Zucki — Estética Avançada | Prévia de site (não oficial)</title>
+  <meta name="description" content="Prévia / proposta de site — não oficial. Clínica de estética avançada em Balneário Camboriú: rosto, cabelo e corpo. Página demonstrativa, não representa a clínica." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo-mark.png" />
+  <style>
+    :root {
+      --offwhite: #faf7f4;
+      --paper: #fffaf7;
+      --champagne: #f3e8dc;
+      --champagne-deep: #e6d5c3;
+      --blush: #f6ece8;
+      --nude: #e8d5ce;
+      --rose: #c9a196;
+      --rose-deep: #a87870;
+      --gold: #c4a574;
+      --gold-deep: #9a7548;
+      --gold-soft: #f4ead8;
+      --ink: #3a2e29;
+      --ink-soft: #6a5b54;
+      --muted: #9a8b83;
+      --line: #eadfd6;
+      --white: #fffdfb;
+      --shadow: 0 24px 60px rgba(80, 50, 40, 0.08);
+      --radius: 28px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Poppins", system-ui, sans-serif;
+      background: var(--offwhite);
+      color: var(--ink);
+      line-height: 1.7;
+      font-weight: 400;
+      font-size: 1.02rem;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--gold-deep); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    a:hover { color: var(--rose-deep); }
+    button, .btn { font-family: inherit; }
+
+    .skip {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      background: var(--gold-deep);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      z-index: 100;
+    }
+    .skip:focus { top: 0.5rem; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; }
+
+    .preview-banner {
+      background: #6b3f3a;
+      color: #f6eadf;
+      text-align: center;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(196, 165, 116, 0.45);
+    }
+    .preview-banner strong {
+      font-weight: 600;
+      color: #f3e0b8;
+    }
+
+    header {
+      background: rgba(255, 250, 247, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand img { width: 44px; height: auto; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-text strong {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.32rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .brand-text span {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.55rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--gold-deep); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none !important;
+      border-radius: 999px;
+      padding: 0.9rem 1.45rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--gold-deep);
+      color: #fff !important;
+      box-shadow: 0 10px 24px rgba(154, 117, 72, 0.28);
+    }
+    .btn-primary:hover { background: #84633c; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink) !important;
+      border: 1px solid var(--champagne-deep);
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-deep) !important; }
+    .btn-whatsapp {
+      background: #1f7a4d;
+      color: #fff !important;
+    }
+    .btn-whatsapp:hover { background: #17633e; }
+    .btn svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--ink);
+      position: relative;
+      margin: 0 auto;
+    }
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    .nav-toggle span::before { top: -5px; }
+    .nav-toggle span::after { top: 5px; }
+
+    @media (max-width: 860px) {
+      .nav-toggle { display: grid; place-items: center; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 0; right: 0;
+        top: 100%;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.1rem 1.5rem 1.4rem;
+        gap: 0.9rem;
+      }
+      #nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav-cta { display: none; }
+      header { position: relative; }
+    }
+
+    main { overflow-x: hidden; }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero { padding: 4.5rem 0 5.5rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.15fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--gold-deep);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.18;
+      color: var(--ink);
+    }
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 4.6rem);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .lead-kicker {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--rose-deep);
+      margin-bottom: 1.25rem;
+    }
+    .lead {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 34rem;
+      margin-bottom: 1.85rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.8rem; }
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+    .rating-pill .score {
+      background: var(--gold-deep);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.22rem 0.58rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+    .stars { color: var(--gold); letter-spacing: 0.06em; }
+
+    .hero-photo { position: relative; }
+    .hero-frame {
+      margin: 0;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--champagne);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: min(78vh, 720px);
+      object-fit: cover;
+      object-position: center 38%;
+    }
+    .photo-caption {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.7rem;
+      padding: 0 0.15rem;
+      letter-spacing: 0.02em;
+      font-weight: 300;
+    }
+
+    section { padding: 5.5rem 0; }
+    .section-head { max-width: 38rem; margin-bottom: 2.8rem; }
+    .section-head h2 {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      margin-bottom: 0.75rem;
+    }
+    .section-head p { color: var(--ink-soft); font-weight: 300; }
+
+    .services { background: linear-gradient(180deg, var(--blush) 0%, var(--offwhite) 100%); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem 1.6rem 1.8rem;
+    }
+    .card-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      color: var(--gold-deep);
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .card-icon svg { width: 22px; height: 22px; }
+    .card h3 { font-size: 1.7rem; margin-bottom: 0.25rem; }
+    .card .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 0.75rem;
+      white-space: nowrap;
+    }
+    .card p { color: var(--ink-soft); font-size: 0.98rem; font-weight: 300; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-photo figure { margin: 0; }
+    .about-frame {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-photo img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+    blockquote {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.28rem, 2.4vw, 1.75rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink);
+      margin: 1.35rem 0 1rem;
+    }
+    .quote-src { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
+    .creds { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+    .cred {
+      border: 1px solid var(--champagne-deep);
+      background: var(--white);
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    .reviews { background: linear-gradient(180deg, var(--gold-soft) 0%, var(--offwhite) 72%); }
+    .rating-hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.2rem;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2.1rem 2.2rem;
+      margin-bottom: 1.8rem;
+    }
+    .big-score {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 5.2rem;
+      line-height: 0.9;
+      font-weight: 500;
+      color: var(--gold-deep);
+    }
+    .rating-hero h3 { font-size: 1.55rem; margin: 0.2rem 0 0.2rem; }
+    .rating-hero p { color: var(--ink-soft); font-size: 0.95rem; font-weight: 300; }
+
+    .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+    .review-card {
+      background: var(--white);
+      border: 1px dashed var(--rose);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.4rem;
+    }
+    .example-tag {
+      display: inline-block;
+      background: var(--blush);
+      color: #7a3e3a;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.24rem 0.55rem;
+      border-radius: 999px;
+      margin-bottom: 0.8rem;
+    }
+    .review-card p { color: var(--ink-soft); font-size: 0.95rem; font-weight: 300; }
+    .review-card .who { margin-top: 0.85rem; font-size: 0.8rem; color: var(--muted); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 2.2rem;
+      align-items: start;
+    }
+    .info-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem 1.7rem;
+    }
+    .info-box h3 { font-size: 1.45rem; margin: 1.4rem 0 0.6rem; }
+    .info-box h3:first-child { margin-top: 0; }
+    .info-box address { font-style: normal; color: var(--ink-soft); font-weight: 300; }
+    .hours { width: 100%; border-collapse: collapse; margin-top: 0.3rem; }
+    .hours th, .hours td {
+      text-align: left;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+    .hours th { color: var(--ink); width: 55%; font-weight: 500; }
+    .hours td { color: var(--ink-soft); font-weight: 300; }
+    .map-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      min-height: 320px;
+      background: linear-gradient(180deg, var(--champagne) 0%, var(--blush) 100%);
+    }
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      text-align: center;
+      color: var(--ink-soft);
+      z-index: 0;
+      padding: 1.5rem;
+      pointer-events: none;
+    }
+    .map-fallback svg { width: 36px; height: 36px; color: var(--gold-deep); }
+    .map-fallback p {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+    }
+    .map-fallback span { font-size: 0.82rem; font-weight: 300; }
+    .map-wrap iframe {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 380px;
+      border: 0;
+      display: block;
+      background: transparent;
+    }
+    .map-link {
+      display: inline-flex;
+      margin-top: 0.7rem;
+      font-size: 0.88rem;
+    }
+    .fachada {
+      margin-top: 1.1rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .fachada img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center 62%;
+    }
+
+    footer {
+      background: #3a2c28;
+      color: #eadfd6;
+      padding: 3.2rem 0 1.8rem;
+      font-size: 0.92rem;
+    }
+    footer a { color: #f3e0b8; }
+    footer a:hover { color: #fff; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 2.2rem;
+      margin-bottom: 2.2rem;
+    }
+    .footer-logo-card {
+      display: inline-block;
+      background: var(--offwhite);
+      border-radius: 18px;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.1rem;
+    }
+    .footer-logo { width: 170px; height: auto; }
+    footer h3 { color: #fff; font-size: 1.25rem; margin-bottom: 0.7rem; }
+    footer ul { list-style: none; }
+    footer li { margin: 0.35rem 0; }
+    footer p { font-weight: 300; }
+    .footer-note {
+      border-top: 1px solid rgba(196, 165, 116, 0.28);
+      padding-top: 1.2rem;
+      color: #c9b8aa;
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .float-wa {
+      position: fixed;
+      right: 1.15rem;
+      bottom: 1.15rem;
+      z-index: 60;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #1f7a4d;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 25px rgba(31, 122, 77, 0.35);
+      text-decoration: none;
+    }
+    .float-wa:hover { background: #17633e; color: #fff; }
+    .float-wa svg { width: 28px; height: 28px; }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 2.4rem 0 3.2rem; }
+      .hero-grid, .about-grid, .location-grid, .cards, .review-grid, .footer-grid, .rating-hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid { gap: 2rem; }
+      .about-grid { gap: 2rem; }
+      .hero-photo img { height: 460px; }
+      .big-score { font-size: 4.2rem; }
+      section { padding: 3.6rem 0; }
+      .wrap { padding: 0 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-photo img { height: 380px; }
+      .hero-actions .btn { flex: 1 1 auto; }
+      .preview-banner { letter-spacing: 0.08em; font-size: 0.68rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="topbar">
+    <div class="preview-banner" role="note">
+      <strong>Prévia / proposta de site — não oficial</strong>
+      &nbsp;·&nbsp; Esta página é uma demonstração e não representa a clínica.
+    </div>
+
+    <header>
+      <div class="nav">
+        <a class="brand" href="#topo">
+          <img src="assets/logo-mark.png" alt="" />
+          <span class="brand-text">
+            <strong>Victória Zucki</strong>
+            <span>Estética avançada</span>
+          </span>
+        </a>
+        <input type="checkbox" id="nav-toggle" class="sr-only" />
+        <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span></label>
+        <ul class="nav-links">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#local">Localização</a></li>
+          <li><a href="https://wa.me/5547999464430">WhatsApp</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="https://wa.me/5547999464430">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.1L1 23l6.1-1.1A11 11 0 0 0 20.5 3.5zm-8.5 18a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-3.6.7.7-3.5-.2-.3A9.1 9.1 0 1 1 12 21.5zm5.3-6.8c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.4 7.4 0 0 1-2.2-1.3 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3c0-.1 0-.3-.1-.4l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.5 1.5.6 1.9.7 2.6.6.4 0 1.3-.5 1.5-1s.3-.9.2-1-.3-.2-.6-.3z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+    </header>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="topo">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Além da estética</p>
+          <h1>Victória Zucki</h1>
+          <p class="lead-kicker">Estética avançada em Balneário&nbsp;Camboriú</p>
+          <p class="lead">Clínica de estética no Centro de Balneário Camboriú, com atendimento em rosto, cabelo e corpo. Biomédica responsável, CRBM 4031.</p>
+          <div class="hero-actions">
+            <a class="btn btn-whatsapp" href="https://wa.me/5547999464430">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.1L1 23l6.1-1.1A11 11 0 0 0 20.5 3.5zm-8.5 18a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-3.6.7.7-3.5-.2-.3A9.1 9.1 0 1 1 12 21.5zm5.3-6.8c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.4 7.4 0 0 1-2.2-1.3 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3c0-.1 0-.3-.1-.4l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.5 1.5.6 1.9.7 2.6.6.4 0 1.3-.5 1.5-1s.3-.9.2-1-.3-.2-.6-.3z"/></svg>
+              WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="#local">Ver localização</a>
+          </div>
+          <div class="rating-pill">
+            <span class="score">5,0</span>
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span>143 avaliações no Google</span>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="hero-frame">
+            <img src="assets/clinica-interior.jpg" alt="Recepção da clínica Victória Zucki, com mural floral e a marca Além da estética na entrada interna." />
+          </div>
+          <p class="photo-caption">Foto pública do espaço da clínica.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicos">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">O que oferecemos</p>
+          <h2>Rosto, cabelo e corpo</h2>
+          <p>As três frentes de cuidado anunciadas pela clínica. Os textos abaixo descrevem apenas o que aparece em fontes públicas; procedimentos específicos podem ser detalhados com a profissional.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="3.2"/><path d="M6 19c.8-3 3-4.5 6-4.5s5.2 1.5 6 4.5"/></svg>
+            </div>
+            <p class="tag">Harmonização</p>
+            <h3>Rosto</h3>
+            <p>Cuidado com o rosto e harmonização, com ênfase em naturalidade e em realçar a melhor versão de cada pessoa — como a própria clínica descreve em suas redes.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 4c2 4 2 8 0 16M12 3c2.2 5 2.2 9.5 0 18M16 4c2 4 2 8 0 16"/></svg>
+            </div>
+            <p class="tag">Tricologia</p>
+            <h3>Cabelo</h3>
+            <p>Atendimento em tricologia e terapia capilar, uma das frentes de atuação da profissional à frente da clínica.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 3.5 5 6.5 5 10a5 5 0 1 1-10 0c0-3.5 2-6.5 5-10z"/></svg>
+            </div>
+            <p class="tag">Estética avançada</p>
+            <h3>Corpo</h3>
+            <p>A clínica também atende o corpo, junto a rosto e cabelo. <span class="example-tag" style="margin:0.3rem 0.2rem 0 0; vertical-align:middle;">Texto de exemplo</span> Descrição detalhada dos procedimentos corporais pode ser incluída após alinhamento com a clínica.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-photo">
+          <figure>
+            <div class="about-frame">
+              <img src="assets/profissional.jpg" alt="Retrato de perfil da profissional Victória Zucki, com cabelo solto e blazer rosa, foto pública da página da clínica." />
+            </div>
+            <figcaption class="photo-caption">Foto pública da página da clínica no Facebook.</figcaption>
+          </figure>
+        </div>
+        <div>
+          <p class="eyebrow">A clínica</p>
+          <h2>Mais do que transformar, o objetivo é valorizar</h2>
+          <blockquote>
+            “Naturalidade também é saber escolher o que realmente faz sentido para cada rosto. Mais do que transformar, o objetivo é valorizar. Trazer viço, melhorar a qualidade da pele e preservar aquilo que torna cada pessoa única. Porque estética, para mim, nunca foi sobre mudar quem você é. É sobre realçar a sua melhor versão.”
+          </blockquote>
+          <p class="quote-src">Trecho publicado na página da clínica (Facebook / republicação pública).</p>
+          <p class="lead" style="margin-top:1.2rem;margin-bottom:0;">Victória Zucki Estética Avançada fica no Centro de Balneário Camboriú. A profissional responsável é biomédica, registrada no CRBM 4031, e também atua com formação em terapia capilar.</p>
+          <div class="creds">
+            <span class="cred">CRBM 4031</span>
+            <span class="cred">Estética avançada</span>
+            <span class="cred">Balneário Camboriú, SC</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="avaliacoes">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Quem já veio</p>
+          <h2>Avaliações</h2>
+        </div>
+        <div class="rating-hero">
+          <div class="big-score">5,0</div>
+          <div>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <h3>Nota 5,0 no Google</h3>
+            <p>143 avaliações públicas no Google. Os depoimentos abaixo são apenas para ilustrar o layout desta proposta — não são avaliações reais.</p>
+          </div>
+        </div>
+        <div class="review-grid">
+          <article class="review-card">
+            <span class="example-tag">Texto de exemplo</span>
+            <p>“Espaço acolhedor e atendimento atencioso. Saí muito satisfeita com o cuidado e com as orientações.”</p>
+            <p class="who">Depoimento ilustrativo — não é uma avaliação real.</p>
+          </article>
+          <article class="review-card">
+            <span class="example-tag">Texto de exemplo</span>
+            <p>“Ambiente elegante e profissional. Voltarei para continuar o acompanhamento.”</p>
+            <p class="who">Depoimento ilustrativo — não é uma avaliação real.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="local">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Venha nos visitar</p>
+          <h2>Localização e horários</h2>
+        </div>
+        <div class="location-grid">
+          <div class="info-box">
+            <h3>Endereço</h3>
+            <address>
+              Rua 2028, 125 — sala 4<br />
+              Centro, Balneário Camboriú — SC<br />
+              CEP 88330-486
+            </address>
+            <h3>Horário</h3>
+            <table class="hours">
+              <tbody>
+                <tr><th>Segunda a sexta</th><td>10h às 19h</td></tr>
+                <tr><th>Sábado</th><td>Fechado</td></tr>
+                <tr><th>Domingo</th><td>Fechado</td></tr>
+              </tbody>
+            </table>
+            <h3>Contato</h3>
+            <p>
+              Telefone / WhatsApp:<br />
+              <a href="tel:+5547999464430">(47) 99946-4430</a>
+            </p>
+            <p style="margin-top:1.15rem;">
+              <a class="btn btn-whatsapp" href="https://wa.me/5547999464430">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.1L1 23l6.1-1.1A11 11 0 0 0 20.5 3.5zm-8.5 18a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-3.6.7.7-3.5-.2-.3A9.1 9.1 0 1 1 12 21.5zm5.3-6.8c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.4 7.4 0 0 1-2.2-1.3 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3c0-.1 0-.3-.1-.4l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.5 1.5.6 1.9.7 2.6.6.4 0 1.3-.5 1.5-1s.3-.9.2-1-.3-.2-.6-.3z"/></svg>
+                Chamar no WhatsApp
+              </a>
+            </p>
+          </div>
+          <div>
+            <div class="map-wrap">
+              <div class="map-fallback">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+                <p>Localização no Google Maps</p>
+                <span>Rua 2028, 125 — sala 4, Centro<br>Balneário Camboriú — SC</span>
+              </div>
+              <iframe
+                title="Mapa da clínica Victória Zucki em Balneário Camboriú"
+                src="https://maps.google.com/maps?q=Vict%C3%B3ria%20Zucki%20Est%C3%A9tica%20Avan%C3%A7ada%2C%20R.%202028%2C%20125%20sala%204%2C%20Centro%2C%20Balne%C3%A1rio%20Cambori%C3%BA%20-%20SC%2C%2088330-486&z=17&hl=pt-BR&output=embed"
+                loading="eager"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <a class="map-link" href="https://maps.google.com/?q=Vict%C3%B3ria+Zucki+Est%C3%A9tica+Avan%C3%A7ada,+R.+2028,+125+sala+4,+Centro,+Balne%C3%A1rio+Cambori%C3%BA+-+SC,+88330-486" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+            <figure class="fachada">
+              <img src="assets/fachada-360.jpg" alt="Fachada de vidro da clínica Victória Zucki no Centro de Balneário Camboriú, com a marca na vitrine." />
+            </figure>
+            <p class="photo-caption">Recorte do tour virtual 360º oficial da clínica (projeção panorâmica).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo-card">
+            <img class="footer-logo" src="assets/logo.png" alt="Logotipo Victória Zucki Estética Avançada, CRBM 4031" />
+          </div>
+          <p>Clínica de estética avançada em Balneário Camboriú. Rosto, cabelo e corpo.</p>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <ul>
+            <li><a href="https://wa.me/5547999464430">WhatsApp (47) 99946-4430</a></li>
+            <li><a href="tel:+5547999464430">Telefone (47) 99946-4430</a></li>
+            <li><a href="https://www.instagram.com/clinica_victoriazucki">Instagram @clinica_victoriazucki</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Endereço</h3>
+          <p>Rua 2028, 125 — sala 4<br />Centro, Balneário Camboriú — SC<br />88330-486</p>
+        </div>
+      </div>
+      <p class="footer-note">
+        Prévia / proposta de site — não oficial. Esta página é uma demonstração criada para apresentação ao contratante e não é o site oficial da clínica, nem foi publicada ou autorizada por ela. Horários e informações podem mudar; confirme diretamente com o estabelecimento.
+      </p>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/5547999464430" aria-label="Abrir conversa no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.1L1 23l6.1-1.1A11 11 0 0 0 20.5 3.5zm-8.5 18a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-3.6.7.7-3.5-.2-.3A9.1 9.1 0 1 1 12 21.5zm5.3-6.8c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.4 7.4 0 0 1-2.2-1.3 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3c0-.1 0-.3-.1-.4l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.5 1.5.6 1.9.7 2.6.6.4 0 1.3-.5 1.5-1s.3-.9.2-1-.3-.2-.6-.3z"/></svg>
+  </a>
+</body>
+</html>
