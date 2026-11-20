@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A.Mare Odontologia Orofacial | Prévia de site (não oficial)</title>
+  <meta name="description" content="Prévia / proposta de site — não oficial. Clínica odontológica e de implantes no Centro de Balneário Camboriú. Página demonstrativa, não representa a clínica." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <style>
+    :root {
+      --petrol: #0c3d4a;
+      --petrol-dark: #082c36;
+      --ink-dark: #10181b;
+      --teal: #1a8a8e;
+      --aqua: #3eb8b4;
+      --aqua-soft: #e7f6f4;
+      --gold: #c6a15a;
+      --gold-soft: #f4ead4;
+      --cream: #f6f3ee;
+      --white: #ffffff;
+      --ink: #16323a;
+      --ink-soft: #4a6168;
+      --muted: #7a8b90;
+      --line: #ddd6ca;
+      --shadow: 0 18px 48px rgba(16, 24, 27, 0.09);
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Nunito Sans", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.02rem;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    a:hover { color: var(--petrol); }
+    .skip {
+      position: absolute; left: 1rem; top: -4rem;
+      background: var(--petrol); color: #fff; padding: 0.6rem 1rem; z-index: 100;
+    }
+    .skip:focus { top: 0.5rem; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; }
+    .preview-banner {
+      background: #7a3e1d;
+      color: #fff7ef;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .preview-banner strong { color: #ffe0c2; }
+
+    header {
+      background: var(--ink-dark);
+      border-bottom: 1px solid rgba(198, 161, 90, 0.28);
+    }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.7rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; text-decoration: none; color: inherit; flex-shrink: 0; }
+    .brand img {
+      height: 56px;
+      width: auto;
+      max-width: 260px;
+      background: var(--ink-dark);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: #d5e0e3; font-size: 0.9rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      border: none; cursor: pointer; text-decoration: none !important;
+      border-radius: 999px; padding: 0.8rem 1.25rem;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.01em;
+      font-family: inherit;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--gold); color: #1a1408 !important; }
+    .btn-primary:hover { background: #d4b36a; }
+    .btn-ghost { background: transparent; color: #fff !important; border: 1px solid rgba(255,255,255,0.35); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold) !important; }
+    .btn-petrol { background: var(--petrol); color: #fff !important; }
+    .btn-petrol:hover { background: var(--petrol-dark); }
+    .btn-outline { background: transparent; color: var(--petrol) !important; border: 1px solid var(--line); }
+    .btn-outline:hover { border-color: var(--teal); }
+    .btn svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+
+    .nav-toggle {
+      display: none; width: 42px; height: 42px;
+      border: 1px solid rgba(255,255,255,0.2); background: transparent;
+      border-radius: 10px; cursor: pointer;
+    }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+      display: block; width: 16px; height: 1.6px; background: #fff; margin: 0 auto; position: relative;
+    }
+    .nav-toggle span::before, .nav-toggle span::after { content: ""; position: absolute; left: 0; }
+    .nav-toggle span::before { top: -5px; }
+    .nav-toggle span::after { top: 5px; }
+    #nav-toggle { display: none; }
+
+    @media (max-width: 860px) {
+      .nav-toggle { display: grid; place-items: center; }
+      .nav-links {
+        display: none; position: absolute; left: 0; right: 0; top: 100%;
+        background: var(--ink-dark); border-bottom: 1px solid rgba(198, 161, 90, 0.28);
+        flex-direction: column; align-items: flex-start;
+        padding: 1rem 1.4rem 1.25rem; gap: 0.8rem;
+      }
+      #nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav { position: relative; }
+      .brand img { height: 44px; max-width: 200px; }
+    }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.4rem; }
+
+    .hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background: #10181b url("assets/fachada-noite.jpg") center 40% / cover no-repeat;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(10,16,18,0.88) 0%, rgba(10,16,18,0.62) 48%, rgba(10,16,18,0.28) 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 5.5rem 0 4.2rem;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 700; color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 0 1px 14px rgba(0,0,0,0.55);
+    }
+    .hero-kicker::before {
+      content: ""; width: 1.6rem; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4.4vw, 3.35rem);
+      font-weight: 800;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      max-width: 18ch;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 22px rgba(0,0,0,0.45);
+    }
+    .nowrap { white-space: nowrap; }
+    .hero .lede {
+      max-width: 38rem;
+      font-size: 1.08rem;
+      color: #dce6e8;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 1px 14px rgba(0,0,0,0.45);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.6rem; }
+    .rating-pill {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(198, 161, 90, 0.35);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem 0.45rem 0.7rem;
+      font-size: 0.88rem;
+      color: #f3efe6;
+    }
+    .stars { color: var(--gold); letter-spacing: 0.08em; }
+    .rating-pill strong { font-weight: 800; }
+
+    section { padding: 4.2rem 0; }
+    .section-kicker {
+      font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 800; color: var(--teal); margin-bottom: 0.45rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      color: var(--petrol); line-height: 1.2; margin-bottom: 0.7rem;
+    }
+    .section-lead { max-width: 40rem; color: var(--ink-soft); margin-bottom: 2rem; }
+
+    .services { background: var(--white); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    .service-card {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.25rem 1.3rem;
+    }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--aqua-soft); color: var(--petrol);
+      display: grid; place-items: center; margin-bottom: 0.9rem;
+    }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-card h3 { font-size: 1.08rem; font-weight: 800; color: var(--petrol); margin-bottom: 0.35rem; }
+    .service-card p { font-size: 0.94rem; color: var(--ink-soft); }
+    .source-note { margin-top: 1.4rem; font-size: 0.82rem; color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2.4rem;
+      align-items: center;
+    }
+    .about-photo figure { margin: 0; }
+    .frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #ccc;
+    }
+    .frame img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+    figcaption {
+      margin-top: 0.55rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .about-facts {
+      list-style: none;
+      margin-top: 1.2rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .about-facts li {
+      padding-left: 1rem;
+      position: relative;
+      color: var(--ink-soft);
+      font-size: 0.96rem;
+    }
+    .about-facts li::before {
+      content: "";
+      position: absolute; left: 0; top: 0.65em;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .team { background: var(--white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    .team-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.25rem 1.35rem;
+      border-left: 3px solid var(--gold);
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .team-card h3 { font-size: 1.08rem; font-weight: 800; color: var(--petrol); line-height: 1.3; }
+    .team-role {
+      display: block; margin: 0.35rem 0 0.55rem;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--teal);
+    }
+    .team-card p { font-size: 0.92rem; color: var(--ink-soft); }
+    .team-note {
+      margin-top: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      background: var(--aqua-soft);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+    }
+
+    .reviews { background: var(--petrol); color: #e8f0f2; }
+    .reviews h2, .reviews .section-kicker { color: #fff; }
+    .reviews .section-kicker { color: var(--gold); }
+    .reviews .section-lead { color: #c5d5d8; }
+    .review-hero {
+      display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap;
+      margin-bottom: 1.6rem;
+    }
+    .review-score {
+      font-size: 3.2rem; font-weight: 800; letter-spacing: -0.04em; color: #fff; line-height: 1;
+    }
+    .review-meta { color: var(--gold-soft); font-weight: 600; }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(198, 161, 90, 0.28);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.2rem 1.15rem;
+    }
+    .review-card .stars { margin-bottom: 0.7rem; display: block; }
+    .review-card p { font-size: 0.95rem; color: #e4eef0; }
+    .review-card footer {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #b7c8cc;
+    }
+    .review-card footer strong { color: #fff; font-weight: 700; display: block; }
+
+    .visit { background: var(--cream); }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .hours-list { list-style: none; margin: 1rem 0 1.2rem; }
+    .hours-list li {
+      display: flex; justify-content: space-between; gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.96rem;
+    }
+    .hours-list span { color: var(--ink-soft); }
+    .hours-note { font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .contact-list { list-style: none; display: grid; gap: 0.45rem; margin: 0.8rem 0 1.2rem; }
+    .contact-list a { font-weight: 700; }
+    .map-block { display: flex; flex-direction: column; gap: 0.8rem; }
+    .map-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 280px;
+      background: linear-gradient(160deg, #dce8ea, #c5d5c8);
+      box-shadow: var(--shadow);
+    }
+    .map-fallback {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem; color: var(--petrol);
+      pointer-events: none;
+    }
+    .map-fallback strong { font-size: 1.05rem; display: block; margin-top: 0.3rem; }
+    .map-fallback span { font-size: 0.9rem; color: var(--ink-soft); max-width: 22rem; }
+    .map-wrap iframe {
+      position: relative; z-index: 1;
+      width: 100%; height: 320px; border: 0;
+      background: transparent;
+    }
+    .fachada-side { margin-top: 0.9rem; }
+    .fachada-side .frame img { aspect-ratio: 16/10; }
+
+    footer.site-footer {
+      background: var(--ink-dark);
+      color: #c9d6d9;
+      padding: 2.4rem 0 1.6rem;
+    }
+    .footer-grid {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 1.5rem; align-items: flex-start;
+    }
+    .footer-brand img {
+      height: 56px; width: auto; max-width: 240px;
+      background: var(--ink-dark); margin-bottom: 0.8rem;
+    }
+    .footer-brand p, .footer-col p, .footer-col a { font-size: 0.9rem; color: #c9d6d9; }
+    .footer-col h3 {
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.6rem; font-weight: 800;
+    }
+    .footer-col a { display: block; text-decoration: none; margin-bottom: 0.3rem; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-legal {
+      margin-top: 1.8rem; padding-top: 1.1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem; color: #8a9aa0;
+    }
+
+    @media (max-width: 900px) {
+      .service-grid, .team-grid, .review-grid, .about-grid, .visit-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero { min-height: 0; background-position: 82% 18%; }
+      .hero::before {
+        background: linear-gradient(180deg, rgba(10,16,18,0.58) 0%, rgba(10,16,18,0.84) 36%, rgba(10,16,18,0.94) 100%);
+      }
+      .hero h1 { max-width: none; }
+      .hero-inner { padding: 3.1rem 0 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <div class="topbar">
+    <div class="preview-banner">Prévia / proposta de site — <strong>não oficial</strong></div>
+    <header>
+      <div class="nav">
+        <a class="brand" href="#topo" aria-label="A.Mare Odontologia Orofacial">
+          <img src="assets/logo.jpg" alt="A.Mare Odontologia Orofacial" width="240" height="75" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span></label>
+        <ul class="nav-links">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#visitar">Visitar</a></li>
+          <li><a class="btn btn-primary" href="https://wa.me/5547996289297">WhatsApp</a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="topo">
+      <div class="wrap hero-inner">
+        <p class="hero-kicker">Odontologia orofacial · Centro, Balneário Camboriú</p>
+        <h1>Cuidado odontológico e implantes <span class="nowrap">na Rua 1021</span></h1>
+        <p class="lede">A.Mare Odontologia Orofacial é uma clínica no Centro de Balneário Camboriú, com atendimento em odontologia, implantes dentários e harmonização orofacial.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5547996289297">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 16.5L1 23l6.7-1.1A11 11 0 1 0 20.5 3.5zm-8.5 17a9.1 9.1 0 0 1-4.6-1.3l-.33-.2-3.97.66.67-3.87-.22-.35A9.1 9.1 0 1 1 12 20.5zm5.3-6.8c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54 1.92.83 2.38.84 3.23.71.52-.08 1.75-.71 2-1.4.25-.68.25-1.27.17-1.4-.07-.13-.27-.2-.57-.35z"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="tel:+554735142401">Ligar (47) 3514-2401</a>
+        </div>
+        <div class="rating-pill">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span><strong>5,0</strong> no Google · 73 avaliações</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicos">
+      <div class="wrap">
+        <p class="section-kicker">Especialidades</p>
+        <h2>Nossos tratamentos</h2>
+        <p class="section-lead">Cuidamos da saúde bucal e da harmonia do sorriso, com atendimento em odontologia, implantes e harmonização orofacial.</p>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="9" r="4"/><path d="M4 20c1.5-3.2 4.4-5 8-5s6.5 1.8 8 5"/></svg>
+            </div>
+            <h3>Harmonização orofacial</h3>
+            <p>Procedimentos que ajudam a equilibrar o sorriso e o contorno da face, com indicação avaliada caso a caso.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.2 8c0-2.2 1.4-3.8 3-3.8.55 0 1.05.22 1.4.55.35-.33.85-.55 1.4-.55 1.6 0 3 1.6 3 3.8 0 1.3-.35 3.4-.8 5.6-.3 1.5-.5 3-.5 4.1 0 1-.55 1.7-1.35 1.7-.8 0-1.3-.7-1.4-1.6h-.7c-.1.9-.6 1.6-1.4 1.6-.8 0-1.35-.7-1.35-1.7 0-1.1-.2-2.6-.5-4.1C8.55 11.4 8.2 9.3 8.2 8z"/></svg>
+            </div>
+            <h3>Implantes dentários</h3>
+            <p>Uma opção para substituir dentes ausentes, com planejamento individual para cada paciente.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 20c0-3 1.5-5 4-5s4 2 4 5"/><path d="M7 11.5c0-3.8 2-7.5 5-7.5s5 3.7 5 7.5c0 1.8-.4 3.2-1 4.4"/><path d="M5 16.5h14"/></svg>
+            </div>
+            <h3>Periodontia</h3>
+            <p>Cuidado com a saúde da gengiva e das estruturas que sustentam os dentes.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M4 19c.6-3 2.8-5 6-5s5.4 2 6 5M14 14.2c.9-.8 2.1-1.2 3.5-1.2 3.2 0 5.4 2 6 5"/></svg>
+            </div>
+            <h3>Odontopediatria</h3>
+            <p>Atendimento odontológico pensado para crianças, com acompanhamento do desenvolvimento da dentição.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16c2-6 4-10 8-10s6 4 8 10"/><path d="M7 16c.8 2 2.4 3 5 3s4.2-1 5-3"/></svg>
+            </div>
+            <h3>Ortodontia e ortopedia</h3>
+            <p>Avaliação e acompanhamento do alinhamento dos dentes e do crescimento ósseo da face.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 4c0 4-3 6-3 10a7 7 0 0 0 14 0c0-4-3-6-3-10M9 19c.5 1.2 1.6 2 3 2s2.5-.8 3-2"/></svg>
+            </div>
+            <h3>Facetas em resina</h3>
+            <p>Camadas finas de resina aplicadas sobre os dentes para ajustar forma e cor, quando indicadas.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about-grid">
+        <div>
+          <p class="section-kicker">A clínica</p>
+          <h2>A.Mare no Centro de Balneário Camboriú</h2>
+          <p>A A.Mare Odontologia Orofacial fica na Rua 1021, 139, salas 01 e 02, no Centro de Balneário Camboriú. É um espaço pensado para o cuidado odontológico, com atendimento em implantes e harmonização orofacial.</p>
+          <p style="margin-top:0.85rem">A clínica é dirigida pela Dra. Talge Monteiro Celuppi&nbsp;Gonçalves. O atendimento também conta com o Dr. Clécio Sidnei&nbsp;Gonçalves e o Dr. Rodrigo Motta de&nbsp;Pinho.</p>
+        </div>
+        <div class="about-photo">
+          <figure>
+            <div class="frame">
+              <img src="assets/consultorio-1.jpg" alt="Consultório da A.Mare, com cadeira odontológica e painel vazado geométrico" width="800" height="600" />
+            </div>
+            <figcaption>Consultório da A.Mare, no Centro de Balneário Camboriú.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="team" id="equipe">
+      <div class="wrap">
+        <p class="section-kicker">Profissionais</p>
+        <h2>Nossa equipe</h2>
+        <p class="section-lead">Conheça os dentistas que atendem na A.Mare.</p>
+        <div class="team-grid">
+          <article class="team-card">
+            <h3>Dra. Talge Monteiro Celuppi&nbsp;Gonçalves</h3>
+            <span class="team-role">CRO 3225/SC · Odontopediatria e ortodontia</span>
+            <p>Responsável pela clínica. Atende em clínica geral, odontopediatria, ortodontia e ortopedia.</p>
+          </article>
+          <article class="team-card">
+            <h3>Dr. Clécio Sidnei&nbsp;Gonçalves</h3>
+            <span class="team-role">Implantodontia · Periodontia</span>
+            <p>Atua com implantes dentários e com o cuidado da gengiva e das estruturas de suporte dos dentes.</p>
+          </article>
+          <article class="team-card">
+            <h3>Dr. Rodrigo Motta de&nbsp;Pinho</h3>
+            <span class="team-role">CRO 6596/SC · Clínica geral</span>
+            <p>Atende em clínica geral, acompanhando a saúde bucal e os tratamentos de rotina.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="reviews" id="avaliacoes">
+      <div class="wrap">
+        <p class="section-kicker">Avaliações</p>
+        <h2>O que dizem nossos pacientes</h2>
+        <div class="review-hero">
+          <div class="review-score">5,0</div>
+          <p class="review-meta">Nota 5,0 no Google, com 73 avaliações.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“Gostaria de expressar minha profunda satisfação com o atendimento recebido na clínica A.Mare. […] O ambiente é aconchegante. […] Um agradecimento especial ao Dr. Igor […]. Pode confiar, pessoal! Vão lá na clínica A.Mare!”</p>
+            <footer><strong>Rozilene Oliveira</strong> Avaliação no Google</footer>
+          </article>
+          <article class="review-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“Atendimento excelente da recepção aos procedimentos, eu sempre tive medo de dentista e hoje vou sem medo algum, super recomendo a clínica, dr Igor e a Dra Isabela não deixam a desejar em nadaaa, perfeitos.”</p>
+            <footer><strong>Jordana Silva De Souza</strong> Avaliação no Google</footer>
+          </article>
+          <article class="review-card">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>“Foi maravilhosa! Uma equipe de profissionais de alta performance. Dr. Guilherme, Dra Camila e Duda a auxiliar que fizeram um excelente trabalho e salvaram meu dente.”</p>
+            <footer><strong>Ana Claudia Aplevicz</strong> Avaliação no Google</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visitar">
+      <div class="wrap">
+        <p class="section-kicker">Visite-nos</p>
+        <h2>Horário e localização</h2>
+        <div class="visit-grid">
+          <div>
+            <h3 style="font-size:1.05rem;color:var(--petrol);margin-bottom:0.3rem;">Funcionamento</h3>
+            <ul class="hours-list">
+              <li>Segunda a sexta <span>9h às 19h</span></li>
+              <li>Sábado <span>9h às 12h</span></li>
+              <li>Domingo <span>Fechado</span></li>
+            </ul>
+            <p class="hours-note">Em feriados, o funcionamento pode mudar. Confirme ao agendar.</p>
+            <h3 style="font-size:1.05rem;color:var(--petrol);margin-bottom:0.3rem;">Contato</h3>
+            <ul class="contact-list">
+              <li>WhatsApp: <a href="https://wa.me/5547996289297">(47) 99628-9297</a></li>
+              <li>Telefone fixo: <a href="tel:+554735142401">(47) 3514-2401</a></li>
+              <li>E-mail: <a href="mailto:equipeamarebc@gmail.com">equipeamarebc@gmail.com</a></li>
+              <li>Instagram: <a href="https://www.instagram.com/a.mareodontologia/" rel="noopener">@a.mareodontologia</a></li>
+            </ul>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/5547996289297">Chamar no WhatsApp</a>
+              <a class="btn btn-outline" href="tel:+554735142401">Ligar para o fixo</a>
+            </div>
+          </div>
+          <div class="map-block">
+            <div class="map-wrap">
+              <div class="map-fallback">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                <strong>R. 1021, 139, salas 01 e 02</strong>
+                <span>Centro, Balneário Camboriú - SC, 88330-762</span>
+              </div>
+              <iframe
+                title="Mapa da A.Mare Odontologia Orofacial"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=Rua%201021%2C%20139%2C%20Centro%2C%20Balne%C3%A1rio%20Cambori%C3%BA%20-%20SC%2C%2088330-762&amp;hl=pt-BR&amp;z=17&amp;output=embed"></iframe>
+            </div>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua%201021%2C%20139%2C%20Centro%2C%20Balne%C3%A1rio%20Cambori%C3%BA%20-%20SC%2C%2088330-762" rel="noopener">Abrir no Google Maps</a></p>
+            <figure class="fachada-side">
+              <div class="frame">
+                <img src="assets/fachada.jpg" alt="Fachada da A.Mare na Rua 1021, com o logotipo da clínica sobre o prédio cinza e o painel vazado na entrada" width="400" height="600" />
+              </div>
+              <figcaption>Fachada da A.Mare na Rua 1021, 139.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="A.Mare Odontologia Orofacial" width="230" height="72" />
+        <p>R. 1021, 139, salas 01 e 02<br />Centro, Balneário Camboriú - SC<br />CEP 88330-762</p>
+      </div>
+      <div class="footer-col">
+        <h3>Contato</h3>
+        <a href="https://wa.me/5547996289297">WhatsApp (47) 99628-9297</a>
+        <a href="tel:+554735142401">Fixo (47) 3514-2401</a>
+        <a href="mailto:equipeamarebc@gmail.com">equipeamarebc@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <h3>Redes</h3>
+        <a href="https://www.instagram.com/a.mareodontologia/" rel="noopener">Instagram @a.mareodontologia</a>
+        <a href="https://www.facebook.com/113671381805589" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="wrap footer-legal">
+      Prévia criada a partir de informações públicas; textos e fotos sujeitos à aprovação da clínica.
+    </div>
+  </footer>
+</body>
+</html>
