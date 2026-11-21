@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Pampa BC — boutique de carnes com tradição argentina no Centro de Balneário Camboriú. Rua 3610, 56, sala 01.">
+  <title>Pampa BC | Boutique de Carnes em Balneário Camboriú</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0b0f0d;
+      --black: #070907;
+      --forest: #0e1a16;
+      --forest-deep: #0a1411;
+      --gold: #c4a56a;
+      --gold-soft: #dbc196;
+      --gold-dim: #8c7344;
+      --cream: #f3ead9;
+      --muted: #b8b0a2;
+      --line: rgba(196,165,106,.28);
+      --max: 1120px;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Montserrat, system-ui, sans-serif;
+      color: var(--cream);
+      background: var(--black);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nowrap { white-space: nowrap; }
+
+    .topbar { position: sticky; top: 0; z-index: 40; }
+    .banner {
+      background: #13241e;
+      color: var(--gold-soft);
+      text-align: center;
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 9px 16px;
+    }
+    header {
+      background: var(--black);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 8px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+    .brand-name {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.1;
+      letter-spacing: .04em;
+      color: var(--gold-soft);
+    }
+    .brand-name small {
+      display: block;
+      font-family: Montserrat, sans-serif;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    .menu a { text-decoration: none; color: var(--cream); }
+    .menu a:hover { color: var(--gold-soft); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--black) !important;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 600;
+      font-size: 13.5px;
+      letter-spacing: .04em;
+      border: 1px solid transparent;
+      transition: background .2s, color .2s;
+    }
+    .btn:hover { background: var(--gold-soft); }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--gold);
+      color: var(--gold-soft) !important;
+    }
+    .btn-outline:hover { background: rgba(196,165,106,.12); }
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .nav-cta { flex-shrink: 0; padding: 10px 18px; }
+
+    .hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background: var(--black) center 42%/cover no-repeat;
+      background-image:
+        linear-gradient(180deg, rgba(7,9,7,.25) 0%, rgba(7,9,7,.55) 48%, rgba(7,9,7,.92) 100%),
+        url("assets/hero-asado.jpg");
+    }
+    .hero-inner { padding: 80px 0 72px; max-width: 740px; }
+    .kicker {
+      display: inline-block;
+      color: var(--gold-soft);
+      font-size: 11.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -.01em;
+      margin-bottom: 18px;
+    }
+    .hero p.lede {
+      font-size: 17.5px;
+      color: #efe6d6;
+      max-width: 34em;
+      margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-soft);
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .stars { color: var(--gold); letter-spacing: 1px; }
+
+    section { padding: 92px 0; }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 600;
+      line-height: 1.12;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .sec-head { max-width: 640px; margin-bottom: 40px; }
+    .sec-head p { color: var(--muted); font-size: 16.5px; }
+
+    .about { background: var(--forest-deep); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .about-copy p { color: #d9d0c2; font-size: 16.5px; margin-bottom: 16px; }
+    .about-photo {
+      position: relative;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 18px;
+    }
+    figcaption {
+      font-size: 11px;
+      color: #8e877c;
+      margin-top: 8px;
+      letter-spacing: .06em;
+    }
+
+    .reviews { background: var(--black); text-align: center; }
+    .reviews .sec-head { margin-inline: auto; }
+    .score {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 96px;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .reviews .stars { font-size: 22px; display: block; margin: 10px 0 8px; }
+    .reviews .count { color: var(--muted); }
+
+    .visit { background: #0b130f; }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .hours { list-style: none; margin: 18px 0 28px; max-width: 340px; }
+    .hours li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(196,165,106,.16);
+      padding: 11px 0;
+      font-size: 15px;
+    }
+    .hours span { color: var(--muted); }
+    .contact-lines { display: grid; gap: 8px; margin-bottom: 24px; font-size: 15.5px; color: #d9d0c2; }
+    .contact-lines a { color: var(--gold-soft); text-decoration: none; font-weight: 600; }
+    .contact-lines a:hover { text-decoration: underline; }
+    .map-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 420px;
+      background: var(--forest);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    }
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 50% 38%, rgba(196,165,106,.14), transparent 55%),
+        var(--forest);
+    }
+    .pin {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--gold);
+      display: grid; place-items: center;
+      margin-bottom: 14px;
+      box-shadow: 0 0 0 8px rgba(196,165,106,.18);
+    }
+    .pin svg { width: 24px; height: 24px; fill: var(--black); }
+    .map-fallback p { max-width: 18em; color: var(--muted); margin: 6px 0 16px; }
+    .map-wrap iframe {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 420px;
+      border: 0;
+    }
+
+    .cta {
+      background:
+        linear-gradient(180deg, rgba(7,9,7,.42), rgba(7,9,7,.78)),
+        url("assets/corte-grelhado.jpg") center 72%/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 100px 0;
+    }
+    .cta h2 { color: #fff; margin-bottom: 12px; }
+    .cta p { color: #efe6d6; max-width: 32em; margin: 0 auto 28px; font-size: 17px; }
+    .cta .hero-actions { justify-content: center; }
+    .cta figcaption { color: #d4cbb8; text-shadow: 0 1px 8px rgba(0,0,0,.7); }
+
+    footer {
+      background: #050705;
+      color: #b8b0a2;
+      padding: 36px 0 28px;
+      font-size: 13.5px;
+    }
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 22px;
+    }
+    footer .brand-name { font-size: 20px; }
+    .disclaimer {
+      border-top: 1px solid rgba(196,165,106,.16);
+      padding-top: 16px;
+      color: #8a8278;
+      font-size: 12px;
+    }
+    .social { display: flex; gap: 18px; }
+    .social a { color: var(--gold-soft); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .about-grid, .visit-grid { grid-template-columns: 1fr; }
+      .about-photo img { height: 420px; }
+      .hero { min-height: 88vh; }
+      .hero-inner { padding: 56px 0 48px; }
+      section { padding: 68px 0; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      header .brand-name { display: none; }
+      .brand img { width: 56px; height: 56px; }
+      .score { font-size: 76px; }
+      .hero-actions .btn,
+      .cta .btn,
+      .about .btn,
+      .visit .btn { width: 100%; }
+      .hero-actions { width: 100%; }
+      .nav-cta { width: auto; flex-shrink: 0; }
+      .kicker { letter-spacing: .12em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="banner">Prévia / proposta de site — não oficial</div>
+    <header>
+      <div class="wrap nav">
+        <a class="brand" href="#inicio">
+          <img src="assets/logo.png" width="64" height="64" alt="Logo Pampa BC Boutique de Carnes">
+          <span class="brand-name">Pampa&nbsp;BC<small>Boutique de carnes</small></span>
+        </a>
+        <ul class="menu">
+          <li><a href="#sobre">A boutique</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#visita">Horário e localização</a></li>
+        </ul>
+        <a class="btn nav-cta" href="tel:+5547988570083">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </header>
+  </div>
+
+  <section class="hero" id="inicio">
+    <div class="wrap hero-inner">
+      <span class="kicker">Balneário Camboriú · Tradição argentina</span>
+      <h1>Boutique de carnes no&nbsp;Centro</h1>
+      <p class="lede">A Pampa BC é uma boutique de carnes no Centro de Balneário Camboriú. Visite o salão na Rua 3610 ou fale conosco por telefone.</p>
+      <div class="hero-actions">
+        <a class="btn" href="tel:+5547988570083">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z"/></svg>
+          Ligar (47) 98857-0083
+        </a>
+        <a class="btn btn-outline" href="#visita">Como chegar</a>
+        <span class="rating-pill"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 no Google · 14 avaliações</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">A boutique</p>
+        <h2>Tradição argentina no Centro de Balneário Camboriú</h2>
+        <p>A Pampa BC — Boutique de Carnes fica na Rua 3610, 56, sala 01, no Centro. O selo da casa leva a inscrição “tradição argentina”.</p>
+        <p>Para saber os cortes disponíveis no dia, ligue ou venha até o salão. O atendimento é de segunda a sábado, das 9h às 20h, e aos domingos, das 9h às 14h.</p>
+        <a class="btn" href="tel:+5547988570083">Ligar para a boutique</a>
+      </div>
+      <figure class="about-photo">
+        <img src="assets/hero-asado.jpg" alt="Carne sendo grelhada sobre brasa, com fogo e fumaça">
+        <figcaption>Imagem do site oficial — não mostra a fachada nem o interior do salão.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="reviews" id="avaliacoes">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">O que dizem os clientes</p>
+        <h2>Avaliação no Google</h2>
+      </div>
+      <p class="score">5,0</p>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <p class="count">14 avaliações no Google</p>
+    </div>
+  </section>
+
+  <section class="visit" id="visita">
+    <div class="wrap visit-grid">
+      <div>
+        <p class="eyebrow">Horário e localização</p>
+        <h2>Venha até a boutique ou ligue para falar conosco</h2>
+        <p style="color:var(--muted);margin:0 0 8px;">Rua 3610, 56, sala 01<br>Centro, Balneário Camboriú&nbsp;-&nbsp;SC<br>88330-245</p>
+        <ul class="hours">
+          <li>Segunda a sábado <span>9h – 20h</span></li>
+          <li>Domingo <span>9h – 14h</span></li>
+        </ul>
+        <div class="contact-lines">
+          <div>Telefone: <a href="tel:+5547988570083">(47) 98857-0083</a></div>
+          <div>E-mail: <a href="mailto:loja@pampabc.com.br">loja@pampabc.com.br</a></div>
+          <div>Site: <a href="https://www.pampabc.com.br/" target="_blank" rel="noopener">pampabc.com.br</a></div>
+          <div>Facebook: <a href="https://www.facebook.com/610788215461394" target="_blank" rel="noopener">Pampa BC Boutique de Carnes</a></div>
+        </div>
+        <a class="btn" href="tel:+5547988570083">Ligar (47) 98857-0083</a>
+      </div>
+      <div class="map-wrap">
+        <div class="map-fallback">
+          <div class="pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+          </div>
+          <strong>Pampa BC</strong>
+          <p>Rua 3610, 56, sala 01<br>Centro, Balneário Camboriú&nbsp;-&nbsp;SC</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+3610,+56,+sala+01,+Centro,+Balne%C3%A1rio+Cambori%C3%BA+-+SC,+88330-245" target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+        <iframe title="Mapa da Pampa BC Boutique de Carnes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Rua+3610,+56,+sala+01,+Centro,+Balne%C3%A1rio+Cambori%C3%BA+-+SC,+88330-245&amp;z=16&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Fale com a boutique</h2>
+      <p>Ligue para conferir o que está disponível e o melhor horário para sua visita, no Centro de Balneário Camboriú.</p>
+      <div class="hero-actions">
+        <a class="btn" href="tel:+5547988570083">Ligar (47) 98857-0083</a>
+      </div>
+      <figcaption style="margin-top:22px;">Foto ilustrativa</figcaption>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <span class="brand-name">Pampa&nbsp;BC</span>
+          <p>Rua 3610, 56, sala 01<br>Centro, Balneário Camboriú&nbsp;-&nbsp;SC</p>
+        </div>
+        <div class="social">
+          <a href="https://www.pampabc.com.br/" target="_blank" rel="noopener">Site</a>
+          <a href="https://www.facebook.com/610788215461394" target="_blank" rel="noopener">Facebook</a>
+          <a href="tel:+5547988570083">Ligar</a>
+        </div>
+      </div>
+      <p class="disclaimer">Prévia criada a partir de informações públicas; textos e fotos sujeitos à aprovação do estabelecimento.</p>
+    </div>
+  </footer>
+</body>
+</html>
